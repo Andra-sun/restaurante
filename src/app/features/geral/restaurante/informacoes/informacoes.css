@@ -1,0 +1,4 @@
+input[readonly] {
+  cursor: default;
+  border-color: #dee2e6;
+}
