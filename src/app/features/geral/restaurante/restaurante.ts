@@ -9,5 +9,5 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
   styleUrl: './restaurante.css'
 })
 export class Restaurante {
-  pagina = "cardapio";
+  pagina = "mesas";
 }

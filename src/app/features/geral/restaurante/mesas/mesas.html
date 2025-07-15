@@ -1,1 +1,13 @@
-<p>mesas works!</p>
+<div class="row">
+  <div
+    class="col-md-3 mb-3"
+    *ngFor="let i of indices()"
+  >
+    <div class="card h-100" [id]="'mesa-' + (i + 1)">
+      <div class="card-body text-center">
+        <h5 class="card-title">Mesa {{ i + 1 }}</h5>
+        <small>livre</small>
+      </div>
+    </div>
+  </div>
+</div>

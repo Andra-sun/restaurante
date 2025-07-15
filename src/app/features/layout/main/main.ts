@@ -22,6 +22,8 @@ export class MainLayoutComponent {
   finalizarDia() {
     this.router.navigate(['/encerramento']);
   }
+  
+  quantidadePedidosAtivos = 10;
 
   pagina = '';
 

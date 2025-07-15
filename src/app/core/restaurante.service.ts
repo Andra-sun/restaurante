@@ -35,4 +35,7 @@ export class RestauranteService {
     this._admins.set(qtd);
   }
   adminsSignal = this._admins.asReadonly();
+
+  //logo
+  
 }

@@ -2,11 +2,12 @@ import { Component, computed, signal } from '@angular/core';
 import { RestauranteService } from '../../../../core/restaurante.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import {NgxDropzoneModule} from 'ngx-dropzone'
 
 @Component({
   selector: 'app-informacoes',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, NgxDropzoneModule],
   templateUrl: './informacoes.html',
   styleUrls: ['./informacoes.css'],
 })
@@ -19,6 +20,10 @@ export class Informacoes {
 
   admins = signal(0);
   editandoAdmins = signal(false);
+
+  arquivoImagem: File | null = null;
+  previewImagem: string | ArrayBuffer | null = null;
+  estaArrastando = false;
 
   constructor(private restaurante: RestauranteService) {
     this.nome.set(this.restaurante.nome());
@@ -53,5 +58,46 @@ export class Informacoes {
       this.restaurante.setAdmins(this.admins());
     }
     this.editandoAdmins.set(!this.editandoAdmins());
+  }
+
+  //imagem
+  aoSelecionarArquivo(event: any) {
+    if (event.addedFiles && event.addedFiles.length > 0) {
+      this.carregarImagem(event.addedFiles[0]);
+    }
+  }
+
+  private carregarImagem(file: File) {
+    if (!file.type.match('image.*')) {
+      alert('Por favor, selecione apenas arquivos de imagem');
+      return;
+    }
+
+    this.arquivoImagem = file;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      this.previewImagem = reader.result;
+    };
+    reader.readAsDataURL(file);
+  }
+
+  removerImagem(event: Event) {
+    event.stopPropagation();
+    this.resetarImagem();
+  }
+
+  resetarImagem() {
+    this.arquivoImagem = null;
+    this.previewImagem = null;
+  }
+
+  salvarImagem() {
+    if (this.arquivoImagem) {
+      console.log('Imagem para upload:', this.arquivoImagem);
+      alert('Imagem selecionada com sucesso!');
+    } else {
+      alert('Nenhuma imagem selecionada');
+    }
   }
 }
