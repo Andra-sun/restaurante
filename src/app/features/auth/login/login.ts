@@ -10,10 +10,10 @@ import { CommonModule } from '@angular/common';
   //   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
+  user = '';
   password = '';
 
   login() {
-    alert(`Usuário: ${this.username}, Senha: ${this.password}`);
+    alert(`Usuário: ${this.user}, Senha: ${this.password}`);
   }
 }

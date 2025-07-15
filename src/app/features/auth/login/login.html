@@ -1,32 +1,63 @@
 <div class="container mt-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6 col-sm-10">
-      <div class="card shadow p-4">
+  <div class="justify-content-center">
+    <div class="col-md-6 col-lg-5 col-sm-10">
+      <div
+        class="card shadow p-4 border-0"
+        style="
+          border-radius: 15px;
+          background: linear-gradient(145deg, #fff, #f8f9fa);
+        "
+      >
         <h2 class="text-center mb-4">Entrar</h2>
         <form>
           <div class="mb-3">
-            <label for="username" class="form-label">Usuário</label>
-            <input
-              type="text"
-              id="username"
-              class="form-control"
-              name="username"
-              required
-              [(ngModel)]="username"
-            />
+            <label for="user" class="form-label fw-bold">Usuário</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="bi bi-person-fill text-primary"></i>
+              </span>
+              <input
+                type="text"
+                id="user"
+                class="form-control py-2"
+                name="user"
+                required
+                [(ngModel)]="user"
+                placeholder="Digite seu usuário"
+                style="border-left: none"
+              />
+            </div>
           </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Senha</label>
-            <input
-              type="text"
-              id="password"
-              class="form-control"
-              name="password"
-              required
-              [(ngModel)]="password"
-            />
+          <div class="mb-4">
+            <label for="password" class="form-label fw-bold">Senha</label>
+            <div class="input-group">
+              <span class="input-group-text bg-light">
+                <i class="bi bi-lock-fill text-primary"></i>
+              </span>
+              <input
+                type="text"
+                id="password"
+                class="form-control  py-2"
+                name="password"
+                required
+                [(ngModel)]="password"
+                placeholder="Digite sua senha"
+                style="border-left: none"
+              />
+              <button
+                class="btn btn-outline-secondary"
+                type="button"
+                id="verSenha"
+              >
+                <i class="bi bi-eye"></i>
+              </button>
+            </div>
           </div>
-          <button class="btn btn-primary w-100" (click)="login()">
+          <button
+            class="btn btn-primary w-100 py-2 fw-bold mb-3"
+            style="border-radius: 8px"
+            (click)="login()"
+          >
             Entrar
           </button>
         </form>
